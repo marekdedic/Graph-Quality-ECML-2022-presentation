@@ -1,0 +1,201 @@
+\documentclass[10pt]{beamer}
+
+\usepackage{polyglossia}
+\usepackage{csquotes}
+\usepackage{datetime}
+\usepackage{fontspec}
+\usepackage{microtype}
+\usepackage{color}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{subcaption}
+\usepackage[backend=biber,style=iso-authoryear,sortlocale=en_US,autolang=other,bibencoding=UTF8]{biblatex}
+\usepackage{booktabs}
+\usepackage{graphics}
+\usepackage{pifont}
+\usepackage{ulem}
+\usepackage{tikz}
+
+\addbibresource{zotero.bib}
+
+\setdefaultlanguage{english}
+\setmainfont{TeX Gyre Termes}
+\usetheme{Boadilla}
+\usecolortheme{crane}
+\setbeamertemplate{title page}[default][rounded=true,shadow=false]
+\setbeamertemplate{section in toc}[ball unnumbered]
+\setbeamertemplate{bibliography item}{}
+
+\hypersetup{
+	pdfencoding=auto,
+	unicode=true,
+	citecolor=green,
+	filecolor=blue,
+	linkcolor=red,
+	urlcolor=blue
+}
+
+\makeatletter
+\newcommand*{\currentSection}{\@currentlabelname}
+\makeatother
+
+\newcommand{\mathmat}{\ensuremath{\mathbf}}
+
+\title[Q2\_3 Quarterly research review]
+{
+	Balancing performance and complexity in hierarchical coarsening of graphs.
+}
+
+\newdate{presentation}{03}{06}{2022}
+\date[June 2022]{\displaydate{presentation}}
+
+\author[Marek Dědič]
+{
+	Marek~Dědič
+}
+
+\institute[Cisco]{}
+
+% Title card
+\AtBeginSection[]{
+	\begin{frame}
+	\vfill
+	\centering
+	\begin{beamercolorbox}[sep = 8pt,center,shadow = true,rounded = true]{title}
+		\usebeamerfont{title}\insertsectionhead\par%
+	\end{beamercolorbox}
+	\vfill
+\end{frame}
+}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\section{Problem introduction}
+
+\begin{frame}{Node classification}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/node_classification.png}\footnote{\cite{kubara_machine_2020}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Problem introduction}
+	\begin{itemize}
+		\item Graph algorithms on big graphs computationally costly and sometimes even unfeasible.
+		\item Our topic: behaviour of graph algorithms when the graph is coarsened
+		\item How much can a graph be coarsened?
+		\item Sometimes even compressed data \( \implies \) better performace
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Pipeline overview}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{images/pipeline_overview/pipeline_overview.pdf}
+	\end{figure}
+\end{frame}
+
+\section{Prior art}
+
+\begin{frame}{HARP - learning on coarser graphs}
+	\begin{itemize}
+		\item HARP - a method for pretraining on simplified graphs
+		\item Simplified graphs generated in the way depicted bellow
+		\item Embedding trained from the coarsest to the finest graph
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[t]{0.38\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{images/edge_collapsing.png}
+			\caption{Edge collapsing}
+		\end{subfigure}
+		\hspace{2em}
+		\begin{subfigure}[t]{0.38\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{images/star_collapsing.png}
+			\caption{Star collapsing}
+		\end{subfigure}
+		\caption{HARP coarsening algorithm. \footnote{Images from \cite{chen_harp_2018}.}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Partially injective graph homomorphisms}
+	\begin{itemize}
+		\item Graph homomorphisms (i. e. subgraph isomorphism)
+\[ uv \in E \left( G \right) \implies \varphi \left( u \right) \varphi \left( v \right) \in E \left( H \right) \]
+		\item Injective graph homomorphisms (i. e. subgraph isomorphism)
+\[ \forall u, v \in V \left( G \right) \quad \varphi \left( u \right) = \varphi \left( v \right) \implies u = v \]
+		\item Partially injective graph homomorphisms
+\[ \forall uv \in \mathcal{C} \quad \varphi \left( u \right) = \varphi \left( v \right) \implies u = v \]
+			where \( \mathcal{C} \subseteq \left( V \left( G \right) \right)^2 \setminus E \left( G \right) \)
+	\end{itemize}
+\end{frame}
+
+\section{Our work}
+
+\begin{frame}{How do these 2 concepts relate?}
+	\begin{itemize}
+		\item HARP transformations are P. I. homomorphisms
+		\item The set of all partially injective homomorphisms between 2 graphs forms a lattice, allowing for searching for the coarsening operation tailored to the problem at hand
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Experimental verification of HARP based on PIHom}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/pihom_comparison/pihom_comparison.pdf}
+		\caption{Prediction accuracy on OGBN-arxiv}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{HARP as a complexity-performance trade-off}
+	\begin{itemize}
+		\item Graph prolongation (de-coarsening) micro-stepping
+		\item Guiding the prolongation based on local properties
+		\item Possibly results in different \enquote{model resolution} in different parts of the graph
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{HARP as a complexity-performance trade-off}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\textwidth]{images/accuracy-size.png}
+		\caption{Prediction accuracy with guided prolongation}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Coarsening models}
+	\begin{itemize}
+		\item Original HARP
+		\item PIHom HARP
+		\item Coarsening based on graph diffusion
+		\item Evolutionary optimization of coarsening
+	\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Conclusion}
+	\centering
+	\begin{itemize}
+		\item Studying GNN behaviour while coarsening a graph
+		\item A new re-formalization of HARP, allowing for a more general approach to graph coarsening
+		\item 3 new coarsening strategies
+		\item Hopefully a paper in sight
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\includegraphics[width=0.75\textwidth]{images/thats_all.png}
+\end{frame}
+
+\end{document}
