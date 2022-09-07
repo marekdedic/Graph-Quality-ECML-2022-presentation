@@ -44,32 +44,47 @@
 
 \newcommand{\mathmat}{\ensuremath{\mathbf}}
 
-\title[Q2\_3 Quarterly research review]
+\title[Graph coarsening \& quality]
 {
-	Balancing performance and complexity in hierarchical coarsening of graphs.
+	Adaptive graph coarsening in the context of local graph quality
 }
 
-\newdate{presentation}{03}{06}{2022}
-\date[June 2022]{\displaydate{presentation}}
+\newdate{presentation}{16}{09}{2022}
+\date[September 2022]{\displaydate{presentation}}
 
 \author[Marek Dědič]
 {
-	Marek~Dědič
+	\underline{Marek~Dědič}\inst{1}\inst{2},
+	Lukáš~Bajer\inst{2},
+	Jakub~Repický\inst{2},
+	Pavel~Procházka\inst{2},
+	Martin~Holeňa\inst{3}
 }
 
-\institute[Cisco]{}
+\institute[CTU \& Cisco]
+{
+	\inst{1} Czech Technical University in Prague \and
+	\inst{2} Cisco Systems, Inc. \and
+	\inst{3} Institute of Computer Science, Czech Academy of Sciences
+}
 
 % Title card
 \AtBeginSection[]{
 	\begin{frame}
-	\vfill
-	\centering
-	\begin{beamercolorbox}[sep = 8pt,center,shadow = true,rounded = true]{title}
-		\usebeamerfont{title}\insertsectionhead\par%
-	\end{beamercolorbox}
-	\vfill
-\end{frame}
+		\vfill
+		\centering
+		\begin{beamercolorbox}[sep = 8pt,center,shadow = true,rounded = true]{title}
+			\usebeamerfont{title}\insertsectionhead\par%
+		\end{beamercolorbox}
+		\vfill
+	\end{frame}
 }
+
+%\AtBeginSection[]{
+	%\begin{frame}{\currentSection}
+		%\tableofcontents[currentsection]
+	%\end{frame}
+%}
 
 \begin{document}
 
@@ -191,6 +206,10 @@
 		\item 3 new coarsening strategies
 		\item Hopefully a paper in sight
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\titlepage
 \end{frame}
 
 \end{document}
