@@ -172,25 +172,45 @@
 	\begin{figure}
 		\centering
 		\includegraphics[width=\textwidth]{images/adaptive-coarsening/adaptive-coarsening.pdf}
-		\caption{Prediction accuracy with guided prolongation}
+		\caption{Prediction accuracy with guided prolongation.}
 	\end{figure}
 \end{frame}
 
-\begin{frame}{HARP as a complexity-performance trade-off}
+\section{Alternative approaches to coarsening}
+
+\begin{frame}{HARP coarsening}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.9\textwidth]{images/coarsening-algorithms/coarsening-algorithms.pdf}
-		\caption{Prediction accuracy with different algorithms}
+		\begin{subfigure}[t]{0.38\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{images/edge_collapsing.png}
+			\caption{Edge collapsing}
+		\end{subfigure}
+		\hspace{2em}
+		\begin{subfigure}[t]{0.38\textwidth}
+			\centering
+			\includegraphics[width=\textwidth]{images/star_collapsing.png}
+			\caption{Star collapsing}
+		\end{subfigure}
+		\caption{HARP coarsening algorithm. \footnote{Images from \cite{chen_harp_2018}.}}
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Coarsening models}
+\begin{frame}{Evaluated approaches to coarsening}
 	\begin{itemize}
 		\item Original HARP
-		\item PIHom HARP
-		\item Coarsening based on graph diffusion
+		\item Coarsening based on the personalized PageRank algorithm
+		\item Coarsening based on heat diffusion
 		\item Evolutionary optimization of coarsening
 	\end{itemize}
+\end{frame}
+
+\begin{frame}{Experimental comparison of coarsening approaches}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{images/coarsening-algorithms/coarsening-algorithms.pdf}
+		\caption{Prediction accuracy with different algorithms.}
+	\end{figure}
 \end{frame}
 
 \section{Conclusion}
