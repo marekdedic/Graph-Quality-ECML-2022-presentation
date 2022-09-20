@@ -153,14 +153,7 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}{How do these 2 concepts relate?}
-	\begin{itemize}
-		\item HARP transformations are P. I. homomorphisms
-		\item The set of all partially injective homomorphisms between 2 graphs forms a lattice, allowing for searching for the coarsening operation tailored to the problem at hand
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{HARP as a complexity-performance trade-off}
+\begin{frame}{Adaptive prolongation}
 	\begin{itemize}
 		\item Graph prolongation (de-coarsening) micro-stepping
 		\item Guiding the prolongation based on local properties
@@ -168,10 +161,17 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{HARP as a complexity-performance trade-off}
+\begin{frame}{Adaptive prolongation}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.9\textwidth]{images/adaptive-coarsening/adaptive-coarsening.pdf}
+		\includegraphics[width=0.8\textwidth]{images/adaptive-prolongation/adaptive-prolongation.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Adaptive prolongation - experimental verification}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\textwidth]{images/adaptive-coarsening/adaptive-coarsening.pdf}
 		\caption{Prediction accuracy with guided prolongation}
 	\end{figure}
 \end{frame}
