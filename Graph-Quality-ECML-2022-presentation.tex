@@ -158,6 +158,7 @@
 		\item Graph prolongation (de-coarsening) micro-stepping
 		\item Guiding the prolongation based on local properties
 		\item Possibly results in different \enquote{model resolution} in different parts of the graph
+		\item Evaluation -- Training a classifier in each (micro) step
 	\end{itemize}
 \end{frame}
 
@@ -223,6 +224,16 @@
 		\item 3 alternative coarsening strategies
 		\item A new re-formalization of HARP, allowing for a more general approach to graph coarsening
 		\item HARP as a framework for graph reduction
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Future work}
+	\centering
+	\begin{itemize}
+		\item Investigate more datasets
+		\item Surrogate metric for adaptive prolongation
+		\item Direct adaptive coarsening (P. Procházka, M. Mareš, M. Dědič, Downstream Task Aware Scalable Graph Size Reduction for Efficient GNN Application on Big Data)
+		\item More thorough exploration of evolved coarsenings
 	\end{itemize}
 \end{frame}
 
